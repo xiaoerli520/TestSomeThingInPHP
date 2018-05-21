@@ -25,5 +25,10 @@ PHP5
 ```
 PHP7
 
+.time By .= is : 0.0071661710739136
+.time By . is : 1.8765479326248
+.time By sprintf() is : 2.0971804380417
+.time By vsprintf() is : 0.0076944351196289
+.time by Join() / Implode() is : 0.0083096981048584
 
 ```
