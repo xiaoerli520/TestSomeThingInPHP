@@ -8,6 +8,8 @@
 class BenchMarkException{}
 class Benchmark
 {
+    const DEFAULT_RETRY_TIMES = 10;
+
     private  $StartTime;
 
     private  $EndTime;
@@ -59,7 +61,7 @@ class Benchmark
 
     }
 
-    public function tryManyTimes(callable $function, $tryTimes)
+    public function tryManyTimes(callable $function, $tryTimes = self::DEFAULT_RETRY_TIMES)
     {
         $this -> DuringArr = null;
         if (intval($tryTimes) <= 0) {
