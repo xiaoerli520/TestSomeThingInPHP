@@ -62,3 +62,6 @@ $cls -> testForeachWithReference();
 
 // 证明之前的带&的方法是没错的
 // php54验证没有引用问题
+
+
+$this_is_testiss = 1;
