@@ -8,9 +8,9 @@
 
 require_once __DIR__ . '/lib.php';
 
-class ForeachTest
+class ForeachTest extends \PHPUnit_Framework_TestCase
 {
-    private $Count = 50000;
+    private $Count = 500000;
 
     private $reTryTime = 100;
 
@@ -50,15 +50,53 @@ class ForeachTest
         echo $timer -> GetTime()."\n";
 
     }
+
+    public function testForeachWithExplode()
+    {
+        $timer = Benchmark::getInstance();
+
+        $array = range(1, $this -> Count);
+
+        $str = implode(",",$array);
+
+        unset($array);
+
+        $timer -> Start();
+
+        $sum = 0;
+
+        foreach (explode(",", $str) as $item) {
+            $sum = $sum + $item;
+        }
+
+        $timer -> Stop();
+
+        echo "with explode each" . $timer -> GetTime()."\n";
+
+    }
+
+    public function testForeachWithoutExplode()
+    {
+        $timer = Benchmark::getInstance();
+
+        $array = range(1, $this -> Count);
+
+        $str = implode(",",$array);
+
+        unset($array);
+
+        $arr = explode(",", $str);
+
+        $timer -> Start();
+
+        $sum = 0;
+
+        foreach ($arr as $item) {
+            $sum = $sum + $item;
+        }
+
+        $timer -> Stop();
+
+        echo "without explode each" . $timer -> GetTime()."\n";
+    }
 }
-
-
-$cls = new ForeachTest();
-
-$cls -> testForeachWithoutReference();
-
-$cls -> testForeachWithReference();
-
-
-// 证明之前的带&的方法是没错的
-// php54验证没有引用问题
