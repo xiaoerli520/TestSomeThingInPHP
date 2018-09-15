@@ -6,11 +6,10 @@
  * Time: 上午11:00
  */
 
-require_once __DIR__ . '/lib.php';
+use PHPUnit\Framework\TestCase;
 
-class FilegetTest extends \PHPUnit_Framework_TestCase
+final class FilegetTest extends TestCase
 {
-    private $Count = 50000;
 
     private $reTryTime = 100;
 
@@ -18,8 +17,8 @@ class FilegetTest extends \PHPUnit_Framework_TestCase
     {
         $timer = Benchmark::getInstance();
         $testAVG = $timer -> tryManyTimes(function () {
-            $f = fopen('/Users/gtx/PhpstormProjects/gearman/ConcatDeepCompare/file/test', 'r');
-            $fc = fread($f, filesize('/Users/gtx/PhpstormProjects/gearman/ConcatDeepCompare/file/test'));
+            $f = fopen(__DIR__.'/file/test', 'r');
+            $fc = fread($f, filesize(__DIR__.'/file/test'));
             $fct = strlen($fc);
             fclose($f);
         },$this -> reTryTime);
@@ -31,7 +30,7 @@ class FilegetTest extends \PHPUnit_Framework_TestCase
     {
         $timer = Benchmark::getInstance();
         $testAVG = $timer -> tryManyTimes(function () {
-            $fc = file_get_contents('/Users/gtx/PhpstormProjects/gearman/ConcatDeepCompare/file/test');
+            $fc = file_get_contents(__DIR__.'/file/test');
             $fu = strlen($fc);
         }, $this -> reTryTime);
         echo "f get ctx = {$testAVG} \n";
@@ -41,7 +40,7 @@ class FilegetTest extends \PHPUnit_Framework_TestCase
     {
         $timer = Benchmark::getInstance();
         $testAVG = $timer -> tryManyTimes(function () {
-            $f = fopen('/Users/gtx/PhpstormProjects/gearman/ConcatDeepCompare/file/test', 'r');
+            $f = fopen(__DIR__.'/file/test', 'r');
             $fc = "";
             if($f){
                 while(!feof($f)) {

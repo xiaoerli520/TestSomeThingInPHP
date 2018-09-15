@@ -6,14 +6,11 @@
  * Time: 下午2:20
  */
 
-require_once __DIR__ . '/lib.php';
+use PHPUnit\Framework\TestCase;
 
-class ForeachTest extends \PHPUnit_Framework_TestCase
+final class ForeachTest extends TestCase
 {
     private $Count = 500000;
-
-    private $reTryTime = 100;
-
 
 
     public function testForeachWithReference()
@@ -30,7 +27,7 @@ class ForeachTest extends \PHPUnit_Framework_TestCase
         }
         $timer -> Stop();
 
-        echo $timer -> GetTime()."\n";
+        echo "Foreach With Reference".$timer -> GetTime()."\n";
     }
 
     public function testForeachWithoutReference()
@@ -47,7 +44,7 @@ class ForeachTest extends \PHPUnit_Framework_TestCase
         }
         $timer -> Stop();
 
-        echo $timer -> GetTime()."\n";
+        echo "Foreach Without Reference".$timer -> GetTime()."\n";
 
     }
 

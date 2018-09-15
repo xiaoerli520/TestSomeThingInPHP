@@ -6,6 +6,7 @@
  * Time: 下午9:16
  */
 class BenchMarkException{}
+
 class Benchmark
 {
     const DEFAULT_RETRY_TIMES = 10;

@@ -4,16 +4,16 @@
  * User: root
  * Date: 18/5/18
  * Time: 下午9:31
- * 几种字符串拼接的测试，表面测试
+ * 几种字符串拼接的测试
  *
- * //todo 调研 ：
  * 最快字符串拼接方式  . , .= , sprintf , join, implode, concat
  */
-require_once __DIR__ . '/lib.php';
 
-class ConcatTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+final class ConcatTest extends TestCase
 {
-    private $Count = 50000;
+    private $Count = 10000;
 
     private $reTryTime = 10;
 
