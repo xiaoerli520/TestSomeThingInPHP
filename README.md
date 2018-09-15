@@ -98,3 +98,26 @@ path #1: 0,
 
 ++$i是返回增加之后的，过程中无需产生临时变量，也不用去free临时变量，效率较高
 
+### for 中的计算是否 会多次计算条件
+
+```
+function name:  (null)
+number of ops:  11
+compiled vars:  !0 = $arr, !1 = $i
+line     #* E I O op                           fetch          ext  return  operands
+-------------------------------------------------------------------------------------
+  13     0  E >   ASSIGN                                                   !0, <array>
+  15     1        ASSIGN                                                   !1, 0
+         2      > JMP                                                      ->5
+         3    >   POST_INC                                         ~4      !1
+         4        FREE                                                     ~4
+         5    >   INIT_FCALL                                               'count'
+         6        SEND_VAR                                                 !0
+         7        DO_ICALL                                         $5      
+         8        IS_SMALLER                                       ~6      !1, $5
+         9      > JMPNZ                                                    ~6, ->3
+  17    10    > > RETURN                                                   1
+
+```
+
+可以看出 是多次FCALL调用的 并没有优化哈
