@@ -121,3 +121,12 @@ line     #* E I O op                           fetch          ext  return  opera
 ```
 
 可以看出 是多次FCALL调用的 并没有优化哈
+
+
+### foreach or array_walk
+
+```
+Foreach Costs :: 0.0025825977325439
+ArrayWalk Costs :: 0.0090026617050171
+
+```
