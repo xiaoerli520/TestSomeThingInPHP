@@ -130,3 +130,10 @@ Foreach Costs :: 0.0025825977325439
 ArrayWalk Costs :: 0.0090026617050171
 
 ```
+
+### chainCall or non-chainCall
+
+```
+With Chain is :: 0.052052021026611
+Without Chain is :: 0.048146963119507
+```
